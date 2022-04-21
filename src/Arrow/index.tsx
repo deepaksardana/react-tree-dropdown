@@ -1,4 +1,3 @@
-import "./styles.scss";
 import * as React from "react";
 import ArrowLeft  from "../assets/arrow-left";
 import ArrowRight  from "../assets/arrow-right";

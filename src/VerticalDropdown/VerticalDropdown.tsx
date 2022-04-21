@@ -4,8 +4,6 @@ import { ICheckedOptions, IInputProps, IOption, ReactTreeNode } from "../interfa
 import SearchInput from "../SearchInput";
 import OptionNode from "./OptionNode";
 
-import "./styles.scss";
-
 interface Props {
   dropdownOptions: IOption[];
   checkedOptions: ICheckedOptions;

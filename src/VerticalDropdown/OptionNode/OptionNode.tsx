@@ -3,7 +3,6 @@ import { map } from "lodash";
 import { Fragment, useState } from "react";
 import { IChecked, ICheckedOptions, IOption, ReactTreeNode } from "../../interface";
 import OptionComponent from "./Option";
-import "./styles.scss";
 
 interface Props {
   option: IOption;

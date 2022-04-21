@@ -10,9 +10,8 @@ import CrossIcon from "./assets/cross";
 import ArrowDown  from "./assets/arrow-down";
 import ArrowUp  from "./assets/arrow-up";
 
-
 import { backwardSelectionChange, filterNodes, findNode, forwardSelectionChange, getSelectedOptions, isHorizontalOption, isVerticalOption } from "./utils";
-import "./style.scss";
+import "./styles/index.scss";
 
 const ReactTreeDropdown = forwardRef((props: ReactTreeDropdownProps, ref) => {
   const { value, initializeValue, dropdownOptions, handleValueChange, optionStyle, placeholder, renderSelectedOptions = true, inputProps, showClearIndicator = true } = props;

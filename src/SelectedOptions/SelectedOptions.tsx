@@ -2,7 +2,6 @@ import * as React from "react";
 import { map } from "lodash";
 import { Fragment } from "react";
 import CrossSVG from "../assets/cross";
-import "./styles.scss";
 import { TreeDropdownValue } from "../interface";
 
 interface Props {

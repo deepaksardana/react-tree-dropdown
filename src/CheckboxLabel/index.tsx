@@ -1,4 +1,3 @@
-import "./style.scss";
 import * as React from "react";
 export default ({labelTxt, checked, handleChange, partialChecked}: any) => {
     return (

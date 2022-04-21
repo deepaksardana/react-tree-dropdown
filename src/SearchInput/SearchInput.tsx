@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { debounce } from "lodash";
 import  SearchIcon from "../assets/search"; 
-import "./styles.scss";
 import { IInputProps } from '../interface';
 
 interface Props {
