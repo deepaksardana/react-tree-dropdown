@@ -1,0 +1,71 @@
+@import "./core-variable.scss";
+.tree-dropdown {
+  position: relative;
+  width: 100%;
+
+  .tree-container {
+    min-height: 45px;
+    border: 1px solid $grey-color;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $white-color;
+
+    .options-content-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: calc(100% - 60px);
+      padding: 0 0.5rem;
+  
+      .options-placeholder {
+        width: 100%;
+      }
+    }
+
+    .clear-container {
+      width: 15px;
+      padding: 0 0.5rem;
+      color: $grey-color;
+    }
+
+    .divider-container {
+      width: 2px;
+      background-color: $grey-color;
+      align-self: stretch;
+      margin: 0.4rem;
+    }
+
+    .dropdown-indicator {
+      width: 15px;
+      padding: 0 0.5rem;
+      color: $grey-color;
+    }
+
+    &.dropdown-active {
+      border-color: $black-color;
+      .dropdown-indicator {
+        color: $black-color;
+      }
+
+      .divider-container {
+        background-color: $black-color;
+      }
+
+      .clear-container {
+        color: $black-color;
+      }
+    }
+  }
+
+  .react-tree-menu {
+    position: absolute;
+    border: 1px solid $black-color;
+    z-index: 10;
+    margin-top: 5px;
+    background-color: $white-color;
+  }
+
+}
+

@@ -1,0 +1,35 @@
+@import "../core-variable.scss";
+.react-tree-search-input {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid $grey-color;
+    position: relative;
+    padding: 4px;
+    max-width: 300px;
+
+
+    .search-input-icon {
+        width: 20px;
+        color: $green-color;
+        margin-right: 10px;
+    }
+
+    .search-input-container {
+        width: 100%;
+        &.icon-active {
+            width: calc(100% - 30px);
+        }
+        input {
+            width: 100%;
+            border: none;
+            background-color: transparent;
+
+            &:focus {
+                outline: none;
+            }
+            
+        }
+    }
+
+}

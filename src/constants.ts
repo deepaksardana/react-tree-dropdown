@@ -1,0 +1,4 @@
+export enum OPTION_STYLE {
+  HORIZONTAL = "HORIZONTAL",
+  VERTICAL = "VERTICAL",
+}

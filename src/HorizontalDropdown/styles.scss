@@ -1,0 +1,43 @@
+@import "../core-variable.scss";
+
+.horizontal-container {
+    padding: 5px;
+
+    .react-tree-search-input{
+        margin-bottom: 10px;
+    }
+}
+
+
+.horizontal-dropdown {
+    display: flex;
+    flex-direction: row;
+    min-height: 100px;
+    max-height: 500px;
+    overflow: auto;
+}
+
+.horizontal-option {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 170px;
+    padding: 4px 8px;
+    border-bottom: 1px solid $grey-color;
+    min-height: 30px;
+    &.selected {
+        background-color: $grey-color;
+    }
+
+    &.hide {
+        display: none;
+    }
+}
+
+.horizontal-level {
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    
+}
