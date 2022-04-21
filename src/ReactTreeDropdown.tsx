@@ -1,4 +1,3 @@
-import { cloneDeep, forEach, keys, map, values } from "lodash";
 import React, { forwardRef, useEffect, useState, useImperativeHandle } from "react";
 
 import { IChecked, ICheckedOptions, IOption, ReactTreeDropdownProps, ReactTreeNode, TreeDropdownValue } from "./interface";
@@ -11,7 +10,6 @@ import ArrowDown  from "./assets/arrow-down";
 import ArrowUp  from "./assets/arrow-up";
 
 import { backwardSelectionChange, filterNodes, findNode, forwardSelectionChange, getSelectedOptions, isHorizontalOption, isVerticalOption } from "./utils";
-import "./styles/index.scss";
 
 const ReactTreeDropdown = forwardRef((props: ReactTreeDropdownProps, ref) => {
   const { value, initializeValue, dropdownOptions, handleValueChange, optionStyle, placeholder, renderSelectedOptions = true, inputProps, showClearIndicator = true } = props;
@@ -23,11 +21,11 @@ const ReactTreeDropdown = forwardRef((props: ReactTreeDropdownProps, ref) => {
   useEffect(() => {
     if (initializeValue && initializeValue.length >= 1) {
       const valueNodes: any = {};
-      forEach(dropdownOptions || [], (node) => {
+      (dropdownOptions || []).forEach((node) => {
         findNode(node, undefined!, initializeValue, valueNodes);
       });
 
-      intializeCheckOptionState(values(valueNodes))
+      intializeCheckOptionState(Object.values(valueNodes))
     }
   }, []);
 
@@ -50,8 +48,8 @@ const ReactTreeDropdown = forwardRef((props: ReactTreeDropdownProps, ref) => {
   }));
 
   const intializeCheckOptionState = (node: ReactTreeNode[]) => {
-    let cloneCheckOptions = cloneDeep(checkedOptions);
-    forEach(node, (currentNode: ReactTreeNode) => {
+    let cloneCheckOptions = Object.assign({}, checkedOptions);
+    node.forEach((currentNode: ReactTreeNode) => {
       cloneCheckOptions = forwardSelectionChange(
         true,
         cloneCheckOptions,
@@ -71,17 +69,18 @@ const ReactTreeDropdown = forwardRef((props: ReactTreeDropdownProps, ref) => {
 
   const tranformSelectedOptions = (selectedOptions: ICheckedOptions): TreeDropdownValue[] => {
     const markChecked = getSelectedOptions(
-      keys(selectedOptions),
-      cloneDeep(selectedOptions),
+      Object.keys(selectedOptions),
+      Object.assign({}, selectedOptions),
       false
     )
-    return map(markChecked, ({node: {node}}) => ({id: node.id, value: node.value}));
+    
+    return Object.values(markChecked).map(({node: {node}}) => ({id: node.id, value: node.value}));
   }
 
   const handleOptionChange = (checked: boolean, option: IOption, options: ReactTreeNode) => {
     let tmpCheckOptionsState = forwardSelectionChange(
       checked,
-      cloneDeep(checkedOptions),
+      Object.assign({}, checkedOptions),
       option,
       options
     );

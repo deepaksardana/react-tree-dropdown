@@ -1,5 +1,4 @@
 import * as React from "react";
-import { map } from "lodash";
 import { ICheckedOptions, IInputProps, IOption, ReactTreeNode } from "../interface";
 import SearchInput from "../SearchInput";
 import OptionNode from "./OptionNode";
@@ -43,7 +42,7 @@ function VerticalDropdown(props: Props) {
       />
       <div className="vertical-dropdown">
         {
-          map(dropdownOptions, renderOption)
+          dropdownOptions.map(renderOption)
         }
 
       </div>

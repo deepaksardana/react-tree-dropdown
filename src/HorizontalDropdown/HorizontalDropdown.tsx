@@ -1,4 +1,3 @@
-import { map } from "lodash";
 import * as React from "react";
 import { useState } from "react";
 import { ICheckedOptions, IInputProps, IOption, ReactTreeNode } from "../interface";
@@ -66,7 +65,7 @@ function HorizontalDropdown({ dropdownOptions, checkedOptions, handleOptionChang
     };
     return (
       <div className="horizontal-level" key={`container${index}`}>
-        {map(node.childrens, renderNodeOptions)}
+        {(node.childrens|| []).map(renderNodeOptions)}
       </div>
     );
   };
@@ -111,7 +110,7 @@ function HorizontalDropdown({ dropdownOptions, checkedOptions, handleOptionChang
 
     return (
       <div className="horizontal-level" key={`container_parent`}>
-        {map(dropdownOptions, renderParentOptions)}
+        {dropdownOptions.map(renderParentOptions)}
       </div>
     );
   };
@@ -125,7 +124,7 @@ function HorizontalDropdown({ dropdownOptions, checkedOptions, handleOptionChang
       />
       <div className="horizontal-dropdown">
         {renderParent()}
-        {map(hirerarchy, renderNodes)}
+        {hirerarchy.map(renderNodes)}
       </div>
     </div>
   )

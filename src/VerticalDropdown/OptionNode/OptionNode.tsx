@@ -1,5 +1,4 @@
 import * as React from "react";
-import { map } from "lodash";
 import { Fragment, useState } from "react";
 import { IChecked, ICheckedOptions, IOption, ReactTreeNode } from "../../interface";
 import OptionComponent from "./Option";
@@ -37,7 +36,7 @@ function OptionNode({ option, parent, isSearchActive, showHideNodes, checkedOpti
         }}
       />
       {expanded && canExpand && <div className="vertical-options-children-container">
-        {map(option.childrens, renderChildren)}
+        {(option.childrens || []).map(renderChildren)}
       </div>
       }
     </Fragment>

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { debounce } from "lodash";
 import  SearchIcon from "../assets/search"; 
 import { IInputProps } from '../interface';
+import { debounce } from '../utils';
 
 interface Props {
   onChange?: any;

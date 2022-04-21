@@ -1,4 +1,3 @@
-import { map, forEach, every, includes, findIndex, some } from "lodash";
 import { OPTION_STYLE } from "../constants";
 import {
   ICheckedOptions,
@@ -24,13 +23,13 @@ export const findNode = (
 ) => {
   const parentNode: ReactTreeNode = { node, parent };
 
-  const valueIndex: number = findIndex(value, (item) => item.id === node.id);
+  const valueIndex: number = value.findIndex((item) => item.id === node.id);
   if (valueIndex >= 0) {
     valueNodes[node.id] = parentNode;
     return valueNodes;
   }
   if (node.childrens && node.childrens.length >= 0) {
-    forEach(node.childrens, (child) => {
+    node.childrens.forEach((child) => {
       findNode(child, parentNode, value, valueNodes);
     });
   }
@@ -39,7 +38,7 @@ export const findNode = (
 
 export const filterNodes = (dropdownOptions: IOption[], searchtxt: string) => {
   const showHide = {};
-  forEach(dropdownOptions, (dropdownOption) => {
+  dropdownOptions.forEach((dropdownOption) => {
     searchString(dropdownOption, searchtxt, showHide);
   });
   return showHide;
@@ -50,9 +49,9 @@ export const searchString = (
   searchtxt: string,
   showHide: ReactTreeObjectNode
 ) => {
-  let found = includes(node.value, searchtxt);
+  let found = node.value.includes(searchtxt);
   if (node.childrens && node.childrens.length >= 1) {
-    forEach(node.childrens, (childItem) => {
+    node.childrens.forEach((childItem) => {
       const childFound = searchString(childItem, searchtxt, showHide);
       if (!found && childFound) {
         found = childFound;
@@ -72,8 +71,7 @@ export const backwardSelectionChange = (
   if (parentNodes) {
     const { node, parent } = parentNodes;
 
-    const partialChecked = some(
-      node.childrens,
+    const partialChecked = (node.childrens || []).some(
       (parentChildNode) =>
         (checkedOptions[parentChildNode.id] &&
           checkedOptions[parentChildNode.id].checked) ||
@@ -87,8 +85,7 @@ export const backwardSelectionChange = (
         backwardSelectionChange(checked, checkedOptions, node, parent);
       }
     } else {
-      const allParentNodeChildrensChecked = every(
-        node.childrens,
+      const allParentNodeChildrensChecked = (node.childrens || []).every(
         (parentChildNode) =>
           checkedOptions[parentChildNode.id] &&
           checkedOptions[parentChildNode.id].checked
@@ -99,7 +96,7 @@ export const backwardSelectionChange = (
         partialChecked,
         childrens:
           node.childrens && node.childrens.length >= 1
-            ? map(node.childrens, "id")
+            ?  node.childrens.map(obj => obj.id)
             : undefined,
         node: {
           node,
@@ -130,14 +127,14 @@ export const forwardSelectionChange = (
     checked,
     partialChecked: checked,
     childrens:
-      childrens && childrens.length >= 1 ? map(childrens, "id") : undefined,
+      childrens && childrens.length >= 1 ? childrens.map(obj => obj.id) : undefined,
     node: {
       node: option,
       parent: options,
     },
   };
   if (childrens) {
-    forEach(childrens, (child) => {
+    childrens.forEach((child) => {
       forwardSelectionChange(checked, checkedOptions, child, {
         node: option,
         parent: options,
@@ -152,7 +149,7 @@ export const getSelectedOptions = (
   checkedOptionState: ICheckedOptions,
   isDependent: boolean
 ) => {
-  forEach(selectedIds, (optionId) => {
+  selectedIds.forEach((optionId) => {
     if (checkedOptionState[optionId]) {
       const { checked, childrens } = checkedOptionState[optionId];
       if (checked) {
@@ -169,3 +166,17 @@ export const getSelectedOptions = (
   });
   return checkedOptionState;
 };
+
+
+export function debounce<Params extends any[]>(
+  func: (...args: Params) => any,
+  timeout: number,
+): (...args: Params) => void {
+  let timer: any;
+  return (...args: Params) => {
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      func(...args)
+    }, timeout)
+  }
+}

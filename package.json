@@ -1,6 +1,6 @@
 {
   "name": "react-multi-style-dropdown-tree",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "React Multi Style Dropdown Tree",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,7 +9,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
-    "prepare": "npm run build",
+    "css-convert": "node-sass src/styles/index.scss -o lib/",
+    "prepare": "npm run build && npm run css-convert",
     "prepublishOnly": "npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
@@ -22,12 +23,11 @@
   "author": "Deepak Sardana",
   "repository": {
     "type": "git",
-    "url": "https://github.com/deepaksardana/rext-redux.git"
+    "url": "https://github.com/deepaksardana/react-tree-dropdown.git"
   },
   "license": "MIT",
   "devDependencies": {
     "@types/react": ">=17.0.5",
-    "@types/lodash": "^4.14.178",
     "react": ">=17.0.2",
     "node-sass": "^7.0.1",
     "prettier": "^2.6.2",
@@ -36,8 +36,6 @@
     "typescript": "^4.6.3"
   },
   "peerDependencies": {
-    "react": ">=17.0.2",
-    "lodash": "^4.17.21",
-    "node-sass": "^7.0.1"
+    "react": ">=17.0.2"
   }
 }

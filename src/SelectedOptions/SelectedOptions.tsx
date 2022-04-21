@@ -1,5 +1,4 @@
 import * as React from "react";
-import { map } from "lodash";
 import { Fragment } from "react";
 import CrossSVG from "../assets/cross";
 import { TreeDropdownValue } from "../interface";
@@ -24,7 +23,7 @@ export default ({ selectedValues, handleCloseClick }: Props) => {
 
   return (
     <Fragment>
-      {map(selectedValues, renderOption)}
+      {selectedValues.map(renderOption)}
     </Fragment>
   )
 }
