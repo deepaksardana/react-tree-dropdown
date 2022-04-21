@@ -66,13 +66,6 @@ const ReactTreeDropdown = forwardRef((props: ReactTreeDropdownProps, ref) => {
         currentNode.parent
       )
     });
-    console.log(
-      getSelectedOptions(
-              keys(cloneCheckOptions),
-              cloneDeep(cloneCheckOptions),
-              false
-            )
-          );
     handleValueChange(tranformSelectedOptions(cloneCheckOptions));
     setCheckedOptions(cloneCheckOptions);
   }
@@ -83,7 +76,7 @@ const ReactTreeDropdown = forwardRef((props: ReactTreeDropdownProps, ref) => {
       cloneDeep(selectedOptions),
       false
     )
-    return map(markChecked, ({node: {node: { id, value}}}) => ({id, value}));
+    return map(markChecked, ({node: {node}}) => ({id: node.id, value: node.value}));
   }
 
   const handleOptionChange = (checked: boolean, option: IOption, options: ReactTreeNode) => {

@@ -1,7 +1,7 @@
 {
-  "name": "react-dropdown-tree",
-  "version": "1.0.7",
-  "description": "React Dropdown Tree",
+  "name": "react-multi-style-dropdown-tree",
+  "version": "0.0.1",
+  "description": "React Multi Style Dropdown Tree",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
