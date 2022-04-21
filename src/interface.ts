@@ -12,11 +12,16 @@ export interface IInputProps {
   inputPlaceholder?: string;
 }
 
+export interface TreeDropdownValue {
+  id: string;
+  value: string;
+}
+
 export interface ReactTreeDropdownProps {
-  initializeValue?: string[];
-  value: string[];
+  initializeValue?: TreeDropdownValue[];
+  value: TreeDropdownValue[];
   dropdownOptions: IOption[];
-  handleValueChange: (selectedOptions: string[]) => void;
+  handleValueChange: (selectedOptions: TreeDropdownValue[]) => void;
   optionStyle: OPTION_STYLE;
   placeholder: string;
   renderSelectedOptions?: boolean;

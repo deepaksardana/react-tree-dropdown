@@ -5,6 +5,7 @@ import {
   IOption,
   ReactTreeNode,
   ReactTreeObjectNode,
+  TreeDropdownValue,
 } from "../interface";
 
 export function isVerticalOption(optionStyle: OPTION_STYLE) {
@@ -18,12 +19,12 @@ export function isHorizontalOption(optionStyle: OPTION_STYLE) {
 export const findNode = (
   node: IOption,
   parent: ReactTreeNode,
-  value: string[],
+  value: TreeDropdownValue[],
   valueNodes: ReactTreeObjectNode
 ) => {
   const parentNode: ReactTreeNode = { node, parent };
 
-  const valueIndex: number = findIndex(value, (item) => item === node.id);
+  const valueIndex: number = findIndex(value, (item) => item.id === node.id);
   if (valueIndex >= 0) {
     valueNodes[node.id] = parentNode;
     return valueNodes;

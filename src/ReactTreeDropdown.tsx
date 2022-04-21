@@ -1,7 +1,7 @@
-import { cloneDeep, forEach, keys, values } from "lodash";
+import { cloneDeep, forEach, keys, map, values } from "lodash";
 import React, { forwardRef, useEffect, useState, useImperativeHandle } from "react";
 
-import { IChecked, ICheckedOptions, IOption, ReactTreeDropdownProps, ReactTreeNode } from "./interface";
+import { IChecked, ICheckedOptions, IOption, ReactTreeDropdownProps, ReactTreeNode, TreeDropdownValue } from "./interface";
 import Container from "./DetectClickOutside";
 import HorizontalDropdown from "./HorizontalDropdown";
 import VerticalDropdown from "./VerticalDropdown";
@@ -66,16 +66,24 @@ const ReactTreeDropdown = forwardRef((props: ReactTreeDropdownProps, ref) => {
         currentNode.parent
       )
     });
-    handleValueChange(
-      keys(
-        getSelectedOptions(
-          keys(cloneCheckOptions),
-          cloneDeep(cloneCheckOptions),
-          false
-        )
-      )
-    );
+    console.log(
+      getSelectedOptions(
+              keys(cloneCheckOptions),
+              cloneDeep(cloneCheckOptions),
+              false
+            )
+          );
+    handleValueChange(tranformSelectedOptions(cloneCheckOptions));
     setCheckedOptions(cloneCheckOptions);
+  }
+
+  const tranformSelectedOptions = (selectedOptions: ICheckedOptions): TreeDropdownValue[] => {
+    const markChecked = getSelectedOptions(
+      keys(selectedOptions),
+      cloneDeep(selectedOptions),
+      false
+    )
+    return map(markChecked, ({node: {node: { id, value}}}) => ({id, value}));
   }
 
   const handleOptionChange = (checked: boolean, option: IOption, options: ReactTreeNode) => {
@@ -92,16 +100,7 @@ const ReactTreeDropdown = forwardRef((props: ReactTreeDropdownProps, ref) => {
       options
     );
     setCheckedOptions(tmpCheckOptionsState);
-
-    handleValueChange(
-      keys(
-        getSelectedOptions(
-          keys(tmpCheckOptionsState),
-          cloneDeep(tmpCheckOptionsState),
-          false
-        )
-      )
-    );
+    handleValueChange(tranformSelectedOptions(tmpCheckOptionsState));
   };
 
   const toggleMenuState = (state: boolean) => {
