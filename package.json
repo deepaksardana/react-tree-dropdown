@@ -16,7 +16,16 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
-  "keywords": [],
+  "keywords": [
+    "react",
+    "dropdown",
+    "tree",
+    "tree dropdown",
+    "select",
+    "react select dropdown",
+    "horizontal tree dropdown",
+    "vertical tree dropdown"
+  ],
   "files": [
     "lib/**/*"
   ],
