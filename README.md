@@ -5,13 +5,13 @@ Creating `react-multi-style-dropdown-tree` which will give two types for hirerar
 
 >Demo:
 
-[Horizontal Style Tree Dropdown](https://codesandbox.io/s/react-tree-dropdown-horizontal-nnv5v0)
+- [Horizontal Style Tree Dropdown](https://codesandbox.io/s/react-tree-dropdown-horizontal-nnv5v0)
 
-[Vertical Style Tree Dropdown](https://codesandbox.io/s/react-tree-dropdown-vertical-eiyik9)
+- [Vertical Style Tree Dropdown](https://codesandbox.io/s/react-tree-dropdown-vertical-eiyik9)
 
-[Render value outside the dropdown](https://codesandbox.io/s/react-tree-dropdown-outside-values-gfs3bs)
+- [Render value outside the dropdown](https://codesandbox.io/s/react-tree-dropdown-outside-values-gfs3bs)
 
-[Adding custom props to search input](https://codesandbox.io/s/react-tree-dropdown-search-input-props-3g4xz1)
+- [Adding custom props to search input](https://codesandbox.io/s/react-tree-dropdown-search-input-props-3g4xz1)
 
 >Install
 
